@@ -18,7 +18,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateTXT = (answers) =>
-`# ${answers.title}
+`
+${createBadge(answers)}
+# ${answers.title}
 ## Description
 ${answers.description}
 ## Table of Contents
@@ -28,11 +30,11 @@ ${answers.description}
 - [Test](#tests)
 - [Question](#question)
 ## Installation
-${answers.instsall}
+${answers.install}
 ## Usage
 ${answers.usage}
 ## License
-${answers.license}
+This repo is made with ${answers.badge}.
 ## How to Contribute
 ${answers.contribution}
 ## Tests
@@ -40,6 +42,8 @@ ${answers.test}
 ## Questions
 If you have any question about the repo, contact me at ${answers.email}. You can also fine more of my work at ${answers.github}.
 `;
+
+
 
 inquirer
   .prompt([
@@ -71,12 +75,12 @@ inquirer
     {
       type: "input",
       name: "install",
-      message: "What command should be run to install dependencies?", //default option npm i 
+      message: "What command should be run to install dependencies?", 
     },
     {
         type: "input",
         name: "test",
-        message: "What command should be run to run tests?", //default npm
+        message: "What command should be run to run tests?", 
       },
     {
       type: "input",
@@ -85,9 +89,9 @@ inquirer
     },
     {
       type: "list",
-      name: "license",
+      name: "badge",
       message: "What kind of license should your project have? (use arrow keys)",
-      choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"]
+      choices: ["MIT", "GPL v3", "None"]
     },
   ])
 .then ((answers) => {
@@ -96,3 +100,26 @@ inquirer
     err ? console.log(err) : console.log("Successfully created your readme!")
   );
 });
+
+function createBadge(answers) {
+    // List choices to the user with inquirer
+    const gpl3 =
+      "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
+    const mit =
+      "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+      let badge;
+      if (answers.badge === "MIT") {
+        badge = mit;
+      } else if (answers.badge === "GPL v3") {
+        badge = gpl3;
+      } else {
+        badge = "";
+      }
+      return badge;
+  }
+  function generatereadme(answers) {
+    return `# Badge Demo
+     
+   ${createBadge(answers)}
+   `;
+   }
