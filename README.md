@@ -6,10 +6,10 @@ This repo is a Readme Generator. Allows user to create a read me through node. I
 Started with npm and getting inquirer to get user input. After getting user input it was just creating the template for the read me then adding it to the js.
 ## Usage
 questions appear in terminal.
-![questions](/images/questions.png)
+![questions](./images/questions.png)
 
 results found in output folder.
-![results](/images/results.png)
+![results](./images/results.png)
 
 ## Credits
 inquirer - https://www.npmjs.com/package/inquirer
