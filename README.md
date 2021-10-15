@@ -2,6 +2,8 @@
 ## Description
 This repo is a Readme Generator. Allows user to create a read me through node. I learned how to use inquirer to get user information. As well as creating a read me through only javascript.
 
+video presentation = https://watch.screencastify.com/v/quMa4Muu2M1dDHaIcUzg
+
 ## Installation
 Started with npm and getting inquirer to get user input. After getting user input it was just creating the template for the read me then adding it to the js.
 ## Usage
